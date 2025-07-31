@@ -1,0 +1,43 @@
+syntax = "v1"
+
+/* --------- 用户注册 --------- */
+type RegisterReq {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type RegisterResp {
+	Token string `json:"token"`
+}
+
+/* --------- 用户登录 --------- */
+type LoginReq {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginResp {}
+
+/* --------- 用户信息 --------- */
+type UserInfoReq {}
+
+type UserInfoResp {
+	UserId   int    `json:"userid"`
+	Username string `json:"username"`
+}
+
+@server (
+	group:  account
+	prefix: v1
+)
+service user-api {
+	@handler register
+	post /user/register (RegisterReq) returns (RegisterResp)
+
+	@handler login
+	post /user/login (LoginReq) returns (LoginResp)
+
+	@handler UserInfo
+	get /user/info returns (UserInfoResp)
+}
+

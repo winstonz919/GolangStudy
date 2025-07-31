@@ -1,0 +1,8 @@
+# 直连模式
+# Target: 127.0.0.1:8080
+
+# ETCD
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: greet.rpc
